@@ -3,31 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Celebrity Signature Maker</title>
-    <!-- Google Fonts import for various styles -->
-    <link href="https://fonts.googleapis.com/css2?family=Agwn+Script&family=Alex+Brush&family=Allura&family=Arizonia&family=Birthstone&family=Caveat:wght@400;700&family=Cedarville+Cursive&family=Clicker+Script&family=Cookie&family=Dancing+Script:wght@400;700&family=Dawne&family=Euphoria+Script&family=Great+Vibes&family=Herr+Von+Muellerhoff&family=Homemade+Apple&family=Italianno&family=Jim+Nightshade&family=Kaushan+Script&family=Kristi&family=La+Belle+Aurore&family=League+Script&family=Meddon&family=Meie+Script&family=Monsieur+La+Doulaise&family=Mr+De+Haviland&family=Mrs+Saint+Delafield&family=Nothing+You+Could+Do&family=Oooh+Baby&family=Over+the+Rainbow&family=Pacifico&family=Parisienne&family=Petit+Formal+Script&family=Pinyon+Script&family=Qwigley&family=Reenie+Beanie&family=Rock+Salt&family=Rouge+Script&family=Sacramento&family=Satisfy&family=Seaweed+Script&family=Shadows+Into+Light&family=Stalemate&family=Tangerine:wght@400;700&family=WindSong&family=Yellowtail&family=Zeyada&display=swap" rel="stylesheet">
+    <title>Signature Pro - Generative Unique Signatures</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Pacifico&family=Reenie+Beanie&family=Satisfy&family=Shadows+Into+Light&family=Yellowtail&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --bg: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-        }
-        
-        * {
-            box-sizing: border-box;
+            --primary: #2563eb;
+            --bg: #fdfcf9;
+            --ink: #1e293b;
+            --border: #e2e8f0;
         }
 
+        * { box-sizing: border-box; }
+        
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             background-color: var(--bg);
-            color: var(--text-main);
+            background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 20px 20px;
             margin: 0;
-            padding: 20px;
-            min-height: 100vh;
+            padding: 2rem;
+            color: var(--ink);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -35,244 +30,314 @@
 
         .header {
             text-align: center;
-            margin-bottom: 3rem;
-            max-width: 800px;
+            margin-bottom: 2rem;
         }
 
-        .badge {
-            background: linear-gradient(135deg, #6366f1, #ec4899);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            font-weight: bold;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-        }
+        h1 { font-weight: 800; font-size: 2.5rem; margin: 0; color: #0f172a; }
+        p { color: #64748b; margin-top: 0.5rem; }
 
-        h1 {
-            font-size: 3rem;
-            margin: 0 0 1rem 0;
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .input-group {
+        .input-container {
             width: 100%;
             max-width: 600px;
-            position: relative;
             margin-bottom: 3rem;
+            position: relative;
         }
 
         input {
             width: 100%;
-            padding: 1.2rem 1.5rem;
-            font-size: 1.2rem;
-            background: var(--card-bg);
+            padding: 1.2rem;
+            font-size: 1.5rem;
             border: 2px solid var(--border);
             border-radius: 1rem;
-            color: white;
-            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            outline: none;
+            transition: all 0.2s;
             text-align: center;
         }
 
-        input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-        }
+        input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2rem;
             width: 100%;
             max-width: 1200px;
         }
 
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 2rem;
-            position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .signature-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border: 1px solid #f1f5f9;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 200px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
             overflow: hidden;
+            min-height: 250px;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        .signature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
         }
 
-        .card-header {
-            position: absolute;
-            top: 15px;
-            left: 15px;
+        .card-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .signature-box {
+            flex-grow: 1;
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .celeb-tag {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 4px 8px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .signature-area {
-            font-size: 3.5rem;
-            line-height: 1.2;
+            justify-content: center;
+            background: #fff;
+            background-image: 
+                linear-gradient(rgba(241, 245, 249, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(241, 245, 249, 0.5) 1px, transparent 1px);
+            background-size: 15px 15px;
+            border-radius: 0.75rem;
             padding: 1rem;
-            margin: 1rem 0;
-            color: #fff;
-            text-align: center;
-            word-break: break-word;
-            /* Default signature look */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-        
-        /* Ink effect */
-        .ink-blue { color: #2563eb; }
-        .ink-black { color: #1e293b; } /* On dark mode this is invisible, sticking to white for now or adjusted */
-        
-        /* Specific Font Classes */
-        .style-steve-jobs { font-family: 'Shadows Into Light', cursive; letter-spacing: -1px; }
-        .style-picasso { font-family: 'Rock Salt', cursive; transform: rotate(-5deg); }
-        .style-disney { font-family: 'Pacifico', cursive; }
-        .style-hancock { font-family: 'Monsieur La Doulaise', cursive; font-size: 4.5rem; }
-        .style-mj { font-family: 'Mrs Saint Delafield', cursive; font-size: 4rem; transform: rotate(-10deg) skew(-10deg); }
-        .style-trump { font-family: 'Permanent Marker', cursive; font-size: 2.5rem; letter-spacing: 1px; } /* Need to import if not present, fallback to bold */
-        .style-obama { font-family: 'Great Vibes', cursive; }
-        .style-musk { font-family: 'Meddon', cursive; }
-        .style-taylor { font-family: 'Sacramento', cursive; }
-        .style-einstein { font-family: 'Reenie Beanie', cursive; }
-        .style-queen { font-family: 'Pinyon Script', cursive; }
-        .style-messi { font-family: 'Stalemate', cursive; transform: rotate(-15deg); }
-        .style-zuckerberg { font-family: 'Caveat', cursive; }
-        .style-lennon { font-family: 'Nothing You Could Do', cursive; }
-        .style-monroe { font-family: 'Rouge Script', cursive; }
 
-        .btn-download {
-            margin-top: auto;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
+        .signature-box svg {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+
+        .regenerate-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #f1f5f9;
             border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            font-size: 0.85rem;
-            transition: background 0.2s;
-            opacity: 0;
+            color: #64748b;
+            transition: all 0.2s;
         }
 
-        .card:hover .btn-download {
-            opacity: 1;
+        .regenerate-btn:hover { background: #e2e8f0; color: var(--primary); transform: rotate(180deg); }
+
+        /* Hidden measurer */
+        #textMeasurer {
+            position: absolute;
+            visibility: hidden;
+            height: auto;
+            width: auto;
+            white-space: nowrap;
         }
 
-        .btn-download:hover {
-            background: var(--primary);
+        /* SVG Ink Filter */
+        .ink-effect {
+            filter: url(#ink-bleed);
         }
 
-        .footer {
-            margin-top: 4rem;
-            color: var(--text-muted);
-            font-size: 0.9rem;
+        @keyframes draw {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .animate-draw {
+            animation: draw 2s ease-out forwards;
+        }
+
+        .animate-fade {
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
     </style>
 </head>
 <body>
 
+    <!-- SVG Filter Definition -->
+    <svg style="width:0; height:0; position:absolute;">
+        <defs>
+            <filter id="ink-bleed">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" />
+                <feGaussianBlur stdDeviation="0.4" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+        </defs>
+    </svg>
+
+    <div id="textMeasurer"></div>
+
     <div class="header">
-        <span class="badge">PRO VERSION</span>
-        <h1>AI Celebrity Signatures</h1>
-        <p class="subtitle">
-            1,000명 이상의 유명인 서명 데이터를 분석하여<br>
-            당신의 이름을 가장 상징적인 스타일로 재창조합니다.
-        </p>
+        <h1>🖋️ Signature Pro</h1>
+        <p>단순한 폰트 변경이 아닌, 고유한 제너레이티브 디자인 서명을 만드세요.</p>
     </div>
 
-    <div class="input-group">
-        <input type="text" id="nameInput" placeholder="서명할 이름을 영문으로 입력하세요 (예: Steve Jobs)" oninput="updateSignatures()" value="My Signature">
+    <div class="input-container">
+        <input type="text" id="nameInput" placeholder="이름을 입력하세요 (예: John Doe)" oninput="debouncedUpdate()" maxlength="25">
     </div>
 
     <div class="grid" id="signatureGrid">
-        <!-- Cards will be generated here -->
-    </div>
-
-    <div class="footer">
-        © 2024 Signature AI Lab. Inspired by history's greatest signatures.
+        <!-- Generative cards will be injected here -->
     </div>
 
     <script>
-        // Celebrity Style Database
-        const styles = [
-            { id: 'jobs', name: 'The Visionary', celeb: 'Steve Jobs Style', font: "'Shadows Into Light', cursive", transform: 'scale(1.1)' },
-            { id: 'hancock', name: 'The Declaration', celeb: 'John Hancock Style', font: "'Monsieur La Doulaise', cursive", transform: 'scale(1.3)' },
-            { id: 'picasso', name: 'The Masterpiece', celeb: 'Picasso Style', font: "'Rock Salt', cursive", transform: 'rotate(-5deg)' },
-            { id: 'mj', name: 'The Pop Star', celeb: 'Michael Jackson Style', font: "'Mrs Saint Delafield', cursive", transform: 'rotate(-10deg) skew(-10deg) scale(1.2)' },
-            { id: 'disney', name: 'The Dreamer', celeb: 'Walt Disney Style', font: "'Pacifico', cursive", transform: 'scale(1)' },
-            { id: 'obama', name: 'The President', celeb: 'Barack Obama Style', font: "'Great Vibes', cursive", transform: 'scale(1.2)' },
-            { id: 'musk', name: 'The Innovator', celeb: 'Elon Musk Style', font: "'Meddon', cursive", transform: 'scale(1.1)' },
-            { id: 'lennon', name: 'The Beatle', celeb: 'John Lennon Style', font: "'Nothing You Could Do', cursive", transform: 'rotate(-3deg)' },
-            { id: 'monroe', name: 'The Icon', celeb: 'Marilyn Monroe Style', font: "'Rouge Script', cursive", transform: 'rotate(-5deg) scale(1.2)' },
-            { id: 'einstein', name: 'The Genius', celeb: 'Albert Einstein Style', font: "'Reenie Beanie', cursive", transform: 'scale(1.1)' },
-            { id: 'messi', name: 'The Legend', celeb: 'Lionel Messi Style', font: "'Stalemate', cursive", transform: 'rotate(-15deg) scale(1.4)' },
-            { id: 'queen', name: 'The Royal', celeb: 'Queen Elizabeth Style', font: "'Pinyon Script', cursive", transform: 'scale(1.2)' },
-            { id: 'taylor', name: 'The Superstar', celeb: 'Taylor Swift Style', font: "'Sacramento', cursive", transform: 'rotate(-5deg) scale(1.2)' },
-            { id: 'trump', name: 'The Tycoon', celeb: 'Donald Trump Style', font: "'Caveat', cursive", transform: 'scale(1.3) skew(-5deg)', weight: '700' }, // Approximation
-            { id: 'zuck', name: 'The Founder', celeb: 'Mark Zuckerberg Style', font: "'Kristi', cursive", transform: 'scale(1.3)' }
+        const signatureStyles = [
+            { id: 'ceo', name: 'The Executive', font: 'Great Vibes', color: '#0f172a' },
+            { id: 'artist', name: 'The Artist', font: 'Satisfy', color: '#2563eb' },
+            { id: 'modern', name: 'The Minimalist', font: 'Caveat', color: '#1e293b' },
+            { id: 'flow', name: 'The Flow', font: 'Dancing Script', color: '#4338ca' },
+            { id: 'sharp', name: 'The Sharp', font: 'Yellowtail', color: '#111827' },
+            { id: 'sketch', name: 'The Sketch', font: 'Shadows Into Light', color: '#334155' },
+            { id: 'casual', name: 'The Casual', font: 'Reenie Beanie', color: '#4b5563' },
+            { id: 'formal', name: 'The Formal', font: 'Pacifico', color: '#1e1b4b' }
         ];
 
-        function init() {
-            const grid = document.getElementById('signatureGrid');
-            grid.innerHTML = styles.map(style => `
-                <div class="card">
-                    <div class="card-header">
-                        <span class="celeb-tag">${style.name}</span>
-                        <span style="font-size:0.8rem; color:#64748b;">• ${style.celeb}</span>
-                    </div>
-                    <div class="signature-area" id="sig-${style.id}" style="font-family: ${style.font}; transform: ${style.transform}; ${style.weight ? 'font-weight:'+style.weight : ''}">
-                        Signature
-                    </div>
-                </div>
-            `).join('');
-            updateSignatures();
+        let timeout = null;
+        function debouncedUpdate() {
+            clearTimeout(timeout);
+            timeout = setTimeout(renderAll, 300);
         }
 
-        function updateSignatures() {
-            const input = document.getElementById('nameInput');
-            // If empty, show placeholder
-            const text = input.value.trim() || "Signature";
+        function getTextWidth(text, font) {
+            const measurer = document.getElementById('textMeasurer');
+            measurer.style.font = `60px ${font}, cursive`;
+            measurer.innerText = text;
+            return measurer.offsetWidth;
+        }
+
+        function createFlourish(type, width, height) {
+            const w = width;
+            const h = height;
+            const startX = 0;
+            const endX = w;
+            const baseY = 40; // baseline
+
+            let path = "";
+            switch(type) {
+                case 'ceo': // Long wavy underline
+                    path = `M ${-10} ${baseY + 10} Q ${w/4} ${baseY + 25} ${w/2} ${baseY + 10} T ${w + 10} ${baseY + 15}`;
+                    break;
+                case 'artist': // Swirl at start and long tail
+                    path = `M ${-20} ${baseY - 20} C ${-40} ${baseY + 20} ${10} ${baseY + 30} ${20} ${baseY + 10} L ${w + 30} ${baseY + 20}`;
+                    break;
+                case 'modern': // Double thin underline
+                    path = `M 0 ${baseY + 8} L ${w} ${baseY + 12} M 5 ${baseY + 15} L ${w - 5} ${baseY + 18}`;
+                    break;
+                case 'flow': // Big loop over and under
+                    path = `M ${w} ${baseY} C ${w+50} ${baseY+50} ${-50} ${baseY+50} ${-20} ${baseY - 10} C ${0} ${baseY-60} ${w/2} ${baseY-40} ${w} ${baseY-20}`;
+                    break;
+                case 'sharp': // Sharp slash
+                    path = `M ${-10} ${baseY + 20} L ${w + 20} ${baseY - 10}`;
+                    break;
+                case 'sketch': // Jittery scratch
+                    path = `M 0 ${baseY + 10} L ${w/3} ${baseY+8} L ${w/2} ${baseY+12} L ${w} ${baseY+10}`;
+                    break;
+                case 'casual': // Small loop at end
+                    path = `M ${w-10} ${baseY} Q ${w+20} ${baseY+20} ${w-5} ${baseY+25} T ${w+40} ${baseY+15}`;
+                    break;
+                case 'formal': // Elegant curved stroke
+                    path = `M ${-15} ${baseY + 15} S ${w/2} ${baseY + 40} ${w + 15} ${baseY + 10}`;
+                    break;
+                default:
+                    path = `M 0 ${baseY+10} L ${w} ${baseY+10}`;
+            }
+
+            // Add slight randomness to each path point to make it unique
+            const jitteredPath = path.replace(/(-?\d+(\.\d+)?)/g, (match) => {
+                return (parseFloat(match) + (Math.random() * 4 - 2)).toFixed(1);
+            });
             
-            styles.forEach(style => {
-                const el = document.getElementById(`sig-${style.id}`);
-                if(el) el.innerText = text;
+            return jitteredPath;
+        }
+
+        function renderAll() {
+            const name = document.getElementById('nameInput').value || "Signature";
+            const grid = document.getElementById('signatureGrid');
+            grid.innerHTML = '';
+
+            signatureStyles.forEach(style => {
+                const card = document.createElement('div');
+                card.className = 'signature-card animate-fade';
+                card.onclick = () => renderCard(card, style, name);
+
+                const width = getTextWidth(name, style.font);
+                const flourish = createFlourish(style.id, width, 60);
+
+                card.innerHTML = `
+                    <div class="card-label">${style.name}</div>
+                    <button class="regenerate-btn" title="다시 생성" onclick="event.stopPropagation(); renderCard(this.parentElement, ${JSON.stringify(style).replace(/"/g, '&quot;')}, '${name}')">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/><path d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9a5.002 5.002 0 0 0-4.9-4zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/></svg>
+                    </button>
+                    <div class="signature-box">
+                        <svg viewBox="-50 -20 ${width + 100} 120" preserveAspectRatio="xMidYMid meet">
+                            <text x="0" y="40" 
+                                  fill="${style.color}" 
+                                  style="font-family: '${style.font}', cursive; font-size: 60px;"
+                                  class="ink-effect">
+                                ${name}
+                            </text>
+                            <path d="${flourish}" 
+                                  fill="none" 
+                                  stroke="${style.color}" 
+                                  stroke-width="2.5" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round"
+                                  class="ink-effect animate-draw"
+                                  style="stroke-dasharray: 1000; stroke-dashoffset: 1000;">
+                            </path>
+                        </svg>
+                    </div>
+                `;
+                grid.appendChild(card);
             });
         }
 
-        // Initialize on load
-        init();
+        function renderCard(cardElement, style, name) {
+            const width = getTextWidth(name, style.font);
+            const flourish = createFlourish(style.id, width, 60);
+            const svgBox = cardElement.querySelector('.signature-box');
+            
+            svgBox.innerHTML = `
+                <svg viewBox="-50 -20 ${width + 100} 120" preserveAspectRatio="xMidYMid meet">
+                    <text x="0" y="40" 
+                          fill="${style.color}" 
+                          style="font-family: '${style.font}', cursive; font-size: 60px;"
+                          class="ink-effect animate-fade">
+                        ${name}
+                    </text>
+                    <path d="${flourish}" 
+                          fill="none" 
+                          stroke="${style.color}" 
+                          stroke-width="2.5" 
+                          stroke-linecap="round" 
+                          stroke-linejoin="round"
+                          class="ink-effect animate-draw"
+                          style="stroke-dasharray: 1000; stroke-dashoffset: 1000;">
+                    </path>
+                </svg>
+            `;
+        }
+
+        // Initialize
+        window.onload = () => {
+            renderAll();
+        };
 
     </script>
 </body>
