@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signature Pro - AI Generative Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Pacifico&family=Reenie+Beanie&family=Satisfy&family=Shadows+Into+Light&family=Yellowtail&family=Homemade+Apple&family=Mr+De+Haviland&family=Mrs+Saint+Delafield&family=Monsieur+La+Doulaise&family=Herr+Von+Muellerhoff&family=Pinyon+Script&family=Sacramento&family=Stalemate&family=Zeyada&display=swap" rel="stylesheet">
+    <title>Signature AI - Infinite Generative Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Pacifico&family=Reenie+Beanie&family=Satisfy&family=Shadows+Into+Light&family=Yellowtail&family=Homemade+Apple&family=Mr+De+Haviland&family=Mrs+Saint+Delafield&family=Monsieur+La+Doulaise&family=Herr+Von+Muellerhoff&family=Pinyon+Script&family=Sacramento&family=Stalemate&family=Zeyada&family=Alex+Brush&family=Allura&family=Arizonia&family=Birthstone&family=Clicker+Script&family=Cookie&family=Euphoria+Script&family=Italianno&family=Jim+Nightshade&family=Kaushan+Script&family=Kristi&family=La+Belle+Aurore&family=Meddon&family=Meie+Script&family=Mr+Bedfort&family=Mrs+Sheppards&family=Nothing+You+Could+Do&family=Oooh+Baby&family=Over+the+Rainbow&family=Parisienne&family=Petit+Formal+Script&family=Qwigley&family=Rock+Salt&family=Rouge+Script&family=Seaweed+Script&family=WindSong&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
@@ -210,7 +210,7 @@
     <svg style="width:0; height:0; position:absolute;">
         <defs>
             <filter id="ballpoint-texture">
-                <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" result="noise" />
+                <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" result="noise" />
                 <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.8" />
                 <feGaussianBlur stdDeviation="0.1" result="blur" />
                 <feComposite in="SourceGraphic" in2="blur" operator="over" />
@@ -221,9 +221,9 @@
     <div id="textMeasurer"></div>
 
     <div class="header">
-        <span class="badge">SIGNATURE AI v3.0 - ADVANCED DATASET</span>
-        <h1>AI Signature Designer</h1>
-        <p class="description">1,000명 이상의 위대한 인물들의 서명 스타일을 학습했습니다.<br>0.5mm 볼펜의 섬세한 질감으로 새로운 서명을 만나보세요.</p>
+        <span class="badge">SIGNATURE AI v4.0 - INFINITE GENERATIVE ENGINE</span>
+        <h1>Infinite Signature Designer</h1>
+        <p class="description">매번 클릭할 때마다 새로운 스타일과 전 세계 위인들의 영감을 불러옵니다.<br>0.5mm 볼펜 질감의 1,000가지 넘는 조합을 만나보세요.</p>
     </div>
 
     <div class="input-container">
@@ -237,20 +237,44 @@
     <div class="grid" id="signatureGrid"></div>
 
     <div class="footer">
-        © 2024 Signature AI Labs. Inspired by 1,000+ Legendary Signatures.
+        © 2024 Signature AI Labs. Powered by Infinite Generative Archetypes.
     </div>
 
     <script>
-        // High-fidelity Archetypes based on celebrity data
-        const signatureStyles = [
-            { id: 'hancock', name: 'The Founding Father', celeb: 'John Hancock', font: 'Monsieur La Doulaise', baseline: 40, weight: 1.5 },
-            { id: 'picasso', name: 'The Abstract Master', celeb: 'Picasso', font: 'Stalemate', baseline: 45, weight: 2.2 },
-            { id: 'disney', name: 'The Dream Maker', celeb: 'Walt Disney', font: 'Pacifico', baseline: 40, weight: 1.8 },
-            { id: 'jobs', name: 'The Minimalist', celeb: 'Steve Jobs', font: 'Shadows Into Light', baseline: 45, weight: 1.2 },
-            { id: 'trump', name: 'The Sharp Power', celeb: 'Donald Trump', font: 'Caveat', baseline: 45, weight: 2.0, style: 'bold' },
-            { id: 'einstein', name: 'The Genius Flow', celeb: 'Albert Einstein', font: 'Reenie Beanie', baseline: 50, weight: 1.4 },
-            { id: 'queen', name: 'The Royal Sovereign', celeb: 'Queen Elizabeth', font: 'Pinyon Script', baseline: 35, weight: 1.5 },
-            { id: 'swift', name: 'The Modern Icon', celeb: 'Taylor Swift', font: 'Sacramento', baseline: 40, weight: 1.6 }
+        const FONTS = [
+            'Caveat', 'Dancing Script', 'Great Vibes', 'Pacifico', 'Reenie Beanie', 'Satisfy', 
+            'Shadows Into Light', 'Yellowtail', 'Homemade Apple', 'Mr De Haviland', 
+            'Mrs Saint Delafield', 'Monsieur La Doulaise', 'Herr+Von+Muellerhoff', 'Pinyon Script', 
+            'Sacramento', 'Stalemate', 'Zeyada', 'Alex Brush', 'Allura', 'Arizonia', 'Birthstone', 
+            'Clicker Script', 'Cookie', 'Euphoria Script', 'Italianno', 'Kaushan Script', 
+            'Kristi', 'La Belle Aurore', 'Meddon', 'Meie Script', 'Nothing You Could Do', 
+            'Oooh Baby', 'Over the Rainbow', 'Parisienne', 'Qwigley', 'Rock Salt', 'Rouge Script', 
+            'Seaweed Script', 'WindSong'
+        ].map(f => f.replace(/\+/g, ' '));
+
+        const CELEBRITIES = [
+            'Albert Einstein', 'Steve Jobs', 'John Hancock', 'Picasso', 'Walt Disney', 'Donald Trump',
+            'Queen Elizabeth', 'Taylor Swift', 'Elon Musk', 'Bill Gates', 'Leonardo da Vinci', 
+            'Abraham Lincoln', 'Marie Curie', 'Martin Luther King', 'Nelson Mandela', 'George Washington',
+            'Michael Jackson', 'Elvis Presley', 'Marilyn Monroe', 'Audrey Hepburn', 'Charlie Chaplin',
+            'Stephen Hawking', 'Mark Zuckerberg', 'Jeff Bezos', 'Oprah Winfrey', 'Beyoncé', 
+            'Lionel Messi', 'Cristiano Ronaldo', 'Tiger Woods', 'Michael Jordan', 'Coco Chanel',
+            'Salvador Dalí', 'Vincent van Gogh', 'Frida Kahlo', 'Claude Monet', 'Andy Warhol',
+            'Wolfgang Amadeus Mozart', 'Ludwig van Beethoven', 'Freddie Mercury', 'John Lennon',
+            'William Shakespeare', 'Ernest Hemingway', 'J.K. Rowling', 'Mark Twain', 'Charles Dickens'
+        ];
+
+        const TITLES = [
+            'The Visionary', 'The Founding Father', 'The Abstract Master', 'The Dream Maker', 
+            'The Silicon Valley', 'The Sharp Power', 'The Royal Sovereign', 'The Modern Icon', 
+            'The Innovator', 'The Philanthropist', 'The Polymath', 'The Emancipator', 
+            'The Nobel Laureate', 'The Human Rights Icon', 'The Global Leader', 'The General',
+            'The King of Pop', 'The Rock and Roll King', 'The Hollywood Legend', 'The Elegant Icon',
+            'The Silent Era Master', 'The Cosmic Mind', 'The Social Pioneer', 'The E-commerce Titan',
+            'The Talk Show Queen', 'The Global Diva', 'The Football Legend', 'The GOAT',
+            'The Tiger', 'The Air Jordan', 'The Fashion Mogul', 'The Surrealist', 'The Impressionist',
+            'The Folk Hero', 'The Maestro', 'The Symphony Master', 'The Bohemian Rhapsody',
+            'The Beatle', 'The Bard', 'The Literary Giant', 'The Fantasy Creator'
         ];
 
         let timeout = null;
@@ -261,58 +285,59 @@
 
         function getTextWidth(text, font) {
             const measurer = document.getElementById('textMeasurer');
-            measurer.style.font = `60px ${font}, cursive`;
+            measurer.style.font = `60px "${font}", cursive`;
             measurer.innerText = text;
             return measurer.offsetWidth;
         }
 
-        // Generative Path Engine - V3 (Advanced Archetypes)
-        function generateSignaturePath(type, w, h, baseY) {
-            const seed = Math.random();
-            const jitter = (amount = 3) => (Math.random() * amount * 2 - amount);
+        // Generate a completely random style object
+        function getRandomStyle() {
+            return {
+                font: FONTS[Math.floor(Math.random() * FONTS.length)],
+                celeb: CELEBRITIES[Math.floor(Math.random() * CELEBRITIES.length)],
+                title: TITLES[Math.floor(Math.random() * TITLES.length)],
+                weight: (1.2 + Math.random() * 1.5).toFixed(1),
+                baseline: 35 + Math.random() * 15,
+                archetype: Math.floor(Math.random() * 10)
+            };
+        }
+
+        function generateUniquePath(type, w, h, baseY) {
+            const jitter = (amount = 4) => (Math.random() * amount * 2 - amount);
             const midX = w / 2;
-            
             let path = "";
 
             switch(type) {
-                case 'hancock': // Large underline with a distinct loop
-                    if (seed > 0.5) {
-                        path = `M -20 ${baseY+15} Q ${midX} ${baseY+50+jitter(10)} ${w+30} ${baseY+10} C ${w+50} ${baseY} ${w+10} ${baseY-30} ${w-20} ${baseY+20}`;
-                    } else {
-                        path = `M -30 ${baseY+20} L ${w+40} ${baseY+15} M ${w+20} ${baseY+15} Q ${w+40} ${baseY+40} ${w} ${baseY+45} T ${-10} ${baseY+30}`;
-                    }
-                    break;
-                case 'picasso': // Abstract underline with dots or slashes
-                    path = `M -10 ${baseY+10} Q ${midX} ${baseY+60+jitter(15)} ${w+20} ${baseY+15} M ${w+5} ${baseY+30} L ${w+15} ${baseY+10} M ${w-10} ${baseY+35} L ${w} ${baseY+15}`;
-                    break;
-                case 'trump': // Sharp, vertical jagged lines
+                case 0: // Underline Wavy
+                    path = `M -20 ${baseY+10} Q ${midX} ${baseY+40+jitter(10)} ${w+30} ${baseY+15}`; break;
+                case 1: // Loop Back
+                    path = `M ${w+5} ${baseY} C ${w+50} ${baseY+50} ${-50} ${baseY+50} ${-10} ${baseY+10}`; break;
+                case 2: // Sharp Slash
+                    path = `M -15 ${baseY+25} L ${w+25} ${baseY-15}`; break;
+                case 3: // Double Underline
+                    path = `M 0 ${baseY+15} L ${w} ${baseY+18} M 5 ${baseY+22} L ${w-5} ${baseY+25}`; break;
+                case 4: // Swirl Start
+                    path = `M -30 ${baseY-20} C -50 ${baseY+40} 20 ${baseY+40} ${midX} ${baseY+15} L ${w+10} ${baseY+10}`; break;
+                case 5: // Over-top Halo
+                    path = `M -10 ${baseY-30} Q ${midX} ${baseY-60} ${w+10} ${baseY-30}`; break;
+                case 6: // Jagged Peak (Trump-ish)
                     path = `M 0 ${baseY+20}`;
-                    for(let i=1; i<=6; i++) {
-                        path += ` L ${(w/6)*i + jitter(5)} ${baseY + (i%2==0 ? 40 : -10) + jitter(5)}`;
-                    }
+                    for(let i=1; i<=5; i++) path += ` L ${(w/5)*i + jitter(5)} ${baseY + (i%2==0 ? 40 : -10) + jitter(10)}`;
                     break;
-                case 'disney': // Loopy and playful
-                    path = `M -10 ${baseY} Q -30 ${baseY+40} 10 ${baseY+30} T ${midX} ${baseY+20} T ${w+20} ${baseY+40}`;
+                case 7: // Circle Wrap
+                    path = `M ${midX} ${baseY-20} A ${midX+20} 50 0 1 1 ${midX} ${baseY+40}`; break;
+                case 8: // Scratchy Jitter
+                    path = `M -10 ${baseY+15}`;
+                    for(let i=0; i<10; i++) path += ` L ${(w/10)*i} ${baseY+15+jitter(5)}`;
                     break;
-                case 'queen': // Very formal and structured underline
-                    path = `M -20 ${baseY+20} L ${w+20} ${baseY+20} M ${-15} ${baseY+25} L ${w+15} ${baseY+25}`;
-                    break;
-                case 'jobs': // Simple, sharp, minimalist
-                    path = `M 0 ${baseY+15} L ${w+jitter(10)} ${baseY+15+jitter(2)}`;
-                    break;
-                case 'einstein': // Rushed, wavy, academic
-                    path = `M -10 ${baseY+10} Q ${w/3} ${baseY+jitter(15)} ${midX} ${baseY+10} T ${w+10} ${baseY+jitter(15)}`;
-                    break;
-                case 'swift': // Heart-like loop at the end
-                    path = `M 0 ${baseY+10} L ${w-10} ${baseY+15} Q ${w+30} ${baseY-10} ${w} ${baseY-20} T ${w-10} ${baseY+10}`;
-                    break;
+                case 9: // Elegant Infinity
+                    path = `M ${-10} ${baseY+10} C ${w/4} ${baseY+60} ${w*0.75} ${baseY-30} ${w+10} ${baseY+10}`; break;
                 default:
-                    path = `M 0 ${baseY+10} Q ${midX} ${baseY+20} ${w} ${baseY+10}`;
+                    path = `M 0 ${baseY+15} L ${w} ${baseY+15}`;
             }
 
-            // Apply fine-grained randomization to the entire path to ensure uniqueness
             return path.replace(/(-?\d+(\.\d+)?)/g, (match) => {
-                return (parseFloat(match) + (Math.random() * 6 - 3)).toFixed(1);
+                return (parseFloat(match) + (Math.random() * 8 - 4)).toFixed(1);
             });
         }
 
@@ -321,34 +346,33 @@
             const grid = document.getElementById('signatureGrid');
             grid.innerHTML = '';
 
-            signatureStyles.forEach(style => {
+            // Generate 8 initial random signatures
+            for(let i=0; i<8; i++) {
                 const card = document.createElement('div');
                 card.className = 'signature-card';
-                card.dataset.id = style.id;
-                
-                renderCardContent(card, style, name);
+                renderCardContent(card, getRandomStyle(), name);
                 grid.appendChild(card);
-            });
+            }
         }
 
         function renderCardContent(card, style, name) {
             const width = getTextWidth(name, style.font);
-            const flourish = generateSignaturePath(style.id, width, 120, style.baseline);
-            const rotation = (Math.random() * 4 - 2).toFixed(1); // Subtle natural rotation
+            const flourish = generateUniquePath(style.archetype, width, 120, style.baseline);
+            const rotation = (Math.random() * 6 - 3).toFixed(1);
             
             card.innerHTML = `
                 <div class="card-meta">
-                    <span class="style-label">${style.name}</span>
+                    <span class="style-label">${style.title}</span>
                     <span class="celeb-insp">Insp: ${style.celeb}</span>
                 </div>
-                <button class="refresh-single-btn" onclick="event.stopPropagation(); regenerateSingle('${style.id}', this.closest('.signature-card'))" title="다시 생성">
+                <button class="refresh-single-btn" onclick="event.stopPropagation(); renderCardContent(this.closest('.signature-card'), getRandomStyle(), '${name}')" title="새로운 스타일 생성">
                     <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                 </button>
                 <div class="signature-display">
-                    <svg viewBox="-60 -40 ${width + 120} 180" style="transform: rotate(${rotation}deg)">
+                    <svg viewBox="-70 -50 ${width + 140} 200" style="transform: rotate(${rotation}deg)">
                         <text x="0" y="${style.baseline}" 
                               fill="#1e293b" 
-                              style="font-family: '${style.font}', cursive; font-size: 60px; font-weight: ${style.style || 'normal'};"
+                              style="font-family: '${style.font}', cursive; font-size: 60px;"
                               class="ballpoint-ink">
                             ${name}
                         </text>
@@ -359,23 +383,11 @@
                               stroke-linecap="round" 
                               stroke-linejoin="round"
                               class="ballpoint-ink animate-write"
-                              style="stroke-dasharray: 2000; stroke-dashoffset: 2000;">
+                              style="stroke-dasharray: 2500; stroke-dashoffset: 2500;">
                         </path>
                     </svg>
                 </div>
             `;
-        }
-
-        function regenerateSingle(styleId, card) {
-            const name = document.getElementById('nameInput').value || "Signature";
-            const style = signatureStyles.find(s => s.id === styleId);
-            const display = card.querySelector('.signature-display');
-            
-            display.style.opacity = '0.2';
-            setTimeout(() => {
-                renderCardContent(card, style, name);
-                display.style.opacity = '1';
-            }, 150);
         }
 
         window.onload = renderAll;
