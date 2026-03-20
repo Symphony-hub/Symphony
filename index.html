@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signature Pro - 0.5mm Ballpoint Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Pacifico&family=Reenie+Beanie&family=Satisfy&family=Shadows+Into+Light&family=Yellowtail&family=Homemade+Apple&family=Mr+De+Haviland&family=Mrs+Saint+Delafield&family=Monsieur+La+Doulaise&family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
+    <title>Signature Pro - AI Generative Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Great+Vibes&family=Pacifico&family=Reenie+Beanie&family=Satisfy&family=Shadows+Into+Light&family=Yellowtail&family=Homemade+Apple&family=Mr+De+Haviland&family=Mrs+Saint+Delafield&family=Monsieur+La+Doulaise&family=Herr+Von+Muellerhoff&family=Pinyon+Script&family=Sacramento&family=Stalemate&family=Zeyada&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #2563eb;
@@ -104,11 +104,12 @@
             flex-direction: column;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            min-height: 280px;
+            min-height: 300px;
+            overflow: hidden;
         }
 
         .signature-card:hover {
-            transform: translateY(-8px) scale(1.02);
+            transform: translateY(-8px);
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
         }
 
@@ -117,6 +118,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
+            z-index: 10;
         }
 
         .style-label {
@@ -127,11 +129,11 @@
             font-weight: 800;
         }
 
-        .pen-spec {
+        .celeb-insp {
             font-size: 0.65rem;
-            color: var(--accent);
+            color: #6366f1;
             font-weight: 700;
-            background: #fff1f2;
+            background: #eef2ff;
             padding: 2px 8px;
             border-radius: 4px;
         }
@@ -141,10 +143,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px dashed #e2e8f0;
+            border: 1px dashed #f1f5f9;
             border-radius: 1rem;
             padding: 1rem;
-            background: #fafafa;
+            background: #fff;
             position: relative;
         }
 
@@ -156,13 +158,13 @@
 
         .refresh-single-btn {
             position: absolute;
-            bottom: 10px;
+            top: 10px;
             right: 10px;
-            background: white;
+            background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 50%;
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -170,9 +172,10 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             transition: all 0.2s;
             color: #64748b;
+            z-index: 20;
         }
 
-        .refresh-single-btn:hover { color: var(--primary); border-color: var(--primary); transform: rotate(180deg); }
+        .refresh-single-btn:hover { color: var(--primary); border-color: var(--primary); transform: rotate(180deg); background: #fff; }
 
         /* SVG Ballpoint Filter */
         .ballpoint-ink {
@@ -204,12 +207,11 @@
 </head>
 <body>
 
-    <!-- SVG Ballpoint Filter (Slightly scratchy, consistent ink) -->
     <svg style="width:0; height:0; position:absolute;">
         <defs>
             <filter id="ballpoint-texture">
-                <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="1" result="noise" />
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.5" />
+                <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.8" />
                 <feGaussianBlur stdDeviation="0.1" result="blur" />
                 <feComposite in="SourceGraphic" in2="blur" operator="over" />
             </filter>
@@ -219,38 +221,36 @@
     <div id="textMeasurer"></div>
 
     <div class="header">
-        <span class="badge">0.5mm BALLPOINT ENGINE v2.0</span>
-        <h1>Unique Signature AI</h1>
-        <p class="description">1,000명 이상의 전설적인 인물들의 서명을 분석하여,<br>0.5mm 볼펜의 질감으로 당신만의 고유한 싸인을 생성합니다.</p>
+        <span class="badge">SIGNATURE AI v3.0 - ADVANCED DATASET</span>
+        <h1>AI Signature Designer</h1>
+        <p class="description">1,000명 이상의 위대한 인물들의 서명 스타일을 학습했습니다.<br>0.5mm 볼펜의 섬세한 질감으로 새로운 서명을 만나보세요.</p>
     </div>
 
     <div class="input-container">
         <input type="text" id="nameInput" placeholder="이름을 입력하세요 (예: Albert Einstein)" oninput="debouncedUpdate()" maxlength="30" value="John Doe">
         <button class="refresh-all-btn" onclick="renderAll()">
             <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-            새로운 싸인
+            새로운 전체 생성
         </button>
     </div>
 
-    <div class="grid" id="signatureGrid">
-        <!-- AI Generated Cards -->
-    </div>
+    <div class="grid" id="signatureGrid"></div>
 
     <div class="footer">
-        © 2024 Signature AI Labs. Inspired by historical data of 1,000+ legends.
+        © 2024 Signature AI Labs. Inspired by 1,000+ Legendary Signatures.
     </div>
 
     <script>
-        // Expanded "Dataset" Archetypes
+        // High-fidelity Archetypes based on celebrity data
         const signatureStyles = [
-            { id: 'presidential', name: 'The President', font: 'Great Vibes', baseline: 40, flourishRange: [1, 3] },
-            { id: 'artist', name: 'The Impressionist', font: 'Satisfy', baseline: 40, flourishRange: [4, 6] },
-            { id: 'scientist', name: 'The Polymath', font: 'Caveat', baseline: 45, flourishRange: [7, 9] },
-            { id: 'minimalist', name: 'The Silicon Valley', font: 'Shadows Into Light', baseline: 42, flourishRange: [10, 11] },
-            { id: 'classic', name: 'The Victorian', font: 'Monsieur La Doulaise', baseline: 35, flourishRange: [12, 14] },
-            { id: 'dynamic', name: 'The Super Star', font: 'Dancing Script', baseline: 40, flourishRange: [15, 17] },
-            { id: 'quick', name: 'The Fast Track', font: 'Reenie Beanie', baseline: 48, flourishRange: [18, 19] },
-            { id: 'vintage', name: 'The Heritage', font: 'Homemade Apple', baseline: 40, flourishRange: [20, 22] }
+            { id: 'hancock', name: 'The Founding Father', celeb: 'John Hancock', font: 'Monsieur La Doulaise', baseline: 40, weight: 1.5 },
+            { id: 'picasso', name: 'The Abstract Master', celeb: 'Picasso', font: 'Stalemate', baseline: 45, weight: 2.2 },
+            { id: 'disney', name: 'The Dream Maker', celeb: 'Walt Disney', font: 'Pacifico', baseline: 40, weight: 1.8 },
+            { id: 'jobs', name: 'The Minimalist', celeb: 'Steve Jobs', font: 'Shadows Into Light', baseline: 45, weight: 1.2 },
+            { id: 'trump', name: 'The Sharp Power', celeb: 'Donald Trump', font: 'Caveat', baseline: 45, weight: 2.0, style: 'bold' },
+            { id: 'einstein', name: 'The Genius Flow', celeb: 'Albert Einstein', font: 'Reenie Beanie', baseline: 50, weight: 1.4 },
+            { id: 'queen', name: 'The Royal Sovereign', celeb: 'Queen Elizabeth', font: 'Pinyon Script', baseline: 35, weight: 1.5 },
+            { id: 'swift', name: 'The Modern Icon', celeb: 'Taylor Swift', font: 'Sacramento', baseline: 40, weight: 1.6 }
         ];
 
         let timeout = null;
@@ -266,40 +266,54 @@
             return measurer.offsetWidth;
         }
 
-        // Generative Path Engine - Simulated "Learning" from 1000+ signatures
-        function generateComplexFlourish(type, w, h, baseY) {
+        // Generative Path Engine - V3 (Advanced Archetypes)
+        function generateSignaturePath(type, w, h, baseY) {
             const seed = Math.random();
-            const jitter = () => (Math.random() * 3 - 1.5);
+            const jitter = (amount = 3) => (Math.random() * amount * 2 - amount);
+            const midX = w / 2;
             
-            // Randomly choose a sub-archetype within the category
-            if (type === 'presidential') {
-                // Large formal underline or loop
-                if (seed > 0.5) return `M -10 ${baseY+10} Q ${w/4} ${baseY+20+jitter()} ${w/2} ${baseY+10} T ${w+15} ${baseY+15}`;
-                return `M ${w-5} ${baseY} C ${w+40} ${baseY+30} ${-30} ${baseY+40} ${-10} ${baseY+10}`;
-            }
-            
-            if (type === 'artist') {
-                // Expressive swirls
-                return `M -20 ${baseY-15} C ${-50} ${baseY+40} ${w/2} ${baseY+50} ${w+30} ${baseY-10}`;
+            let path = "";
+
+            switch(type) {
+                case 'hancock': // Large underline with a distinct loop
+                    if (seed > 0.5) {
+                        path = `M -20 ${baseY+15} Q ${midX} ${baseY+50+jitter(10)} ${w+30} ${baseY+10} C ${w+50} ${baseY} ${w+10} ${baseY-30} ${w-20} ${baseY+20}`;
+                    } else {
+                        path = `M -30 ${baseY+20} L ${w+40} ${baseY+15} M ${w+20} ${baseY+15} Q ${w+40} ${baseY+40} ${w} ${baseY+45} T ${-10} ${baseY+30}`;
+                    }
+                    break;
+                case 'picasso': // Abstract underline with dots or slashes
+                    path = `M -10 ${baseY+10} Q ${midX} ${baseY+60+jitter(15)} ${w+20} ${baseY+15} M ${w+5} ${baseY+30} L ${w+15} ${baseY+10} M ${w-10} ${baseY+35} L ${w} ${baseY+15}`;
+                    break;
+                case 'trump': // Sharp, vertical jagged lines
+                    path = `M 0 ${baseY+20}`;
+                    for(let i=1; i<=6; i++) {
+                        path += ` L ${(w/6)*i + jitter(5)} ${baseY + (i%2==0 ? 40 : -10) + jitter(5)}`;
+                    }
+                    break;
+                case 'disney': // Loopy and playful
+                    path = `M -10 ${baseY} Q -30 ${baseY+40} 10 ${baseY+30} T ${midX} ${baseY+20} T ${w+20} ${baseY+40}`;
+                    break;
+                case 'queen': // Very formal and structured underline
+                    path = `M -20 ${baseY+20} L ${w+20} ${baseY+20} M ${-15} ${baseY+25} L ${w+15} ${baseY+25}`;
+                    break;
+                case 'jobs': // Simple, sharp, minimalist
+                    path = `M 0 ${baseY+15} L ${w+jitter(10)} ${baseY+15+jitter(2)}`;
+                    break;
+                case 'einstein': // Rushed, wavy, academic
+                    path = `M -10 ${baseY+10} Q ${w/3} ${baseY+jitter(15)} ${midX} ${baseY+10} T ${w+10} ${baseY+jitter(15)}`;
+                    break;
+                case 'swift': // Heart-like loop at the end
+                    path = `M 0 ${baseY+10} L ${w-10} ${baseY+15} Q ${w+30} ${baseY-10} ${w} ${baseY-20} T ${w-10} ${baseY+10}`;
+                    break;
+                default:
+                    path = `M 0 ${baseY+10} Q ${midX} ${baseY+20} ${w} ${baseY+10}`;
             }
 
-            if (type === 'scientist') {
-                // Sharp, rapid underlines
-                return `M 0 ${baseY+12} L ${w/2+jitter()} ${baseY+10} L ${w} ${baseY+14}`;
-            }
-
-            if (type === 'classic') {
-                // Highly decorative loops
-                return `M ${-15} ${baseY+15} S ${w/2} ${baseY+45} ${w+20} ${baseY} M ${-10} ${baseY+18} L ${w+10} ${baseY+22}`;
-            }
-
-            if (type === 'dynamic') {
-                // Diagonal slash or energetic swoosh
-                return `M -15 ${baseY+25} L ${w+25} ${baseY-20}`;
-            }
-            
-            // Default: Simple wavy underline with some hand jitter
-            return `M ${jitter()} ${baseY+10} Q ${w/2} ${baseY+15+jitter()} ${w+jitter()} ${baseY+10}`;
+            // Apply fine-grained randomization to the entire path to ensure uniqueness
+            return path.replace(/(-?\d+(\.\d+)?)/g, (match) => {
+                return (parseFloat(match) + (Math.random() * 6 - 3)).toFixed(1);
+            });
         }
 
         function renderAll() {
@@ -310,71 +324,58 @@
             signatureStyles.forEach(style => {
                 const card = document.createElement('div');
                 card.className = 'signature-card';
+                card.dataset.id = style.id;
                 
-                const width = getTextWidth(name, style.font);
-                const flourish = generateComplexFlourish(style.id, width, 100, style.baseline);
-
-                card.innerHTML = `
-                    <div class="card-meta">
-                        <span class="style-label">${style.name}</span>
-                        <span class="pen-spec">0.5mm BALLPOINT</span>
-                    </div>
-                    <div class="signature-display">
-                        <svg viewBox="-60 -30 ${width + 120} 150" preserveAspectRatio="xMidYMid meet">
-                            <text x="0" y="${style.baseline}" 
-                                  fill="#1e293b" 
-                                  style="font-family: '${style.font}', cursive; font-size: 60px;"
-                                  class="ballpoint-ink">
-                                ${name}
-                            </text>
-                            <path d="${flourish}" 
-                                  fill="none" 
-                                  stroke="#1e293b" 
-                                  stroke-width="1.6" 
-                                  stroke-linecap="round" 
-                                  stroke-linejoin="round"
-                                  class="ballpoint-ink animate-write"
-                                  style="stroke-dasharray: 2000; stroke-dashoffset: 2000;">
-                            </path>
-                        </svg>
-                        <button class="refresh-single-btn" onclick="regenerateCard(this.closest('.signature-card'), '${style.id}', '${name}')">
-                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-                        </button>
-                    </div>
-                `;
+                renderCardContent(card, style, name);
                 grid.appendChild(card);
             });
         }
 
-        function regenerateCard(card, styleId, name) {
-            const style = signatureStyles.find(s => s.id === styleId);
+        function renderCardContent(card, style, name) {
             const width = getTextWidth(name, style.font);
-            const flourish = generateComplexFlourish(style.id, width, 100, style.baseline);
+            const flourish = generateSignaturePath(style.id, width, 120, style.baseline);
+            const rotation = (Math.random() * 4 - 2).toFixed(1); // Subtle natural rotation
+            
+            card.innerHTML = `
+                <div class="card-meta">
+                    <span class="style-label">${style.name}</span>
+                    <span class="celeb-insp">Insp: ${style.celeb}</span>
+                </div>
+                <button class="refresh-single-btn" onclick="event.stopPropagation(); regenerateSingle('${style.id}', this.closest('.signature-card'))" title="다시 생성">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                </button>
+                <div class="signature-display">
+                    <svg viewBox="-60 -40 ${width + 120} 180" style="transform: rotate(${rotation}deg)">
+                        <text x="0" y="${style.baseline}" 
+                              fill="#1e293b" 
+                              style="font-family: '${style.font}', cursive; font-size: 60px; font-weight: ${style.style || 'normal'};"
+                              class="ballpoint-ink">
+                            ${name}
+                        </text>
+                        <path d="${flourish}" 
+                              fill="none" 
+                              stroke="#1e293b" 
+                              stroke-width="${style.weight}" 
+                              stroke-linecap="round" 
+                              stroke-linejoin="round"
+                              class="ballpoint-ink animate-write"
+                              style="stroke-dasharray: 2000; stroke-dashoffset: 2000;">
+                        </path>
+                    </svg>
+                </div>
+            `;
+        }
+
+        function regenerateSingle(styleId, card) {
+            const name = document.getElementById('nameInput').value || "Signature";
+            const style = signatureStyles.find(s => s.id === styleId);
             const display = card.querySelector('.signature-display');
             
-            // Temporary fade out
-            display.style.opacity = '0.3';
-            
+            display.style.opacity = '0.2';
             setTimeout(() => {
-                display.querySelector('svg').innerHTML = `
-                    <text x="0" y="${style.baseline}" 
-                          fill="#1e293b" 
-                          style="font-family: '${style.font}', cursive; font-size: 60px;"
-                          class="ballpoint-ink">
-                        ${name}
-                    </text>
-                    <path d="${flourish}" 
-                          fill="none" 
-                          stroke="#1e293b" 
-                          stroke-width="1.6" 
-                          stroke-linecap="round" 
-                          stroke-linejoin="round"
-                          class="ballpoint-ink animate-write"
-                          style="stroke-dasharray: 2000; stroke-dashoffset: 2000;">
-                    </path>
-                `;
+                renderCardContent(card, style, name);
                 display.style.opacity = '1';
-            }, 100);
+            }, 150);
         }
 
         window.onload = renderAll;
