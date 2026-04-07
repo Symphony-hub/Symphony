@@ -203,6 +203,75 @@
             text-align: center;
             padding-bottom: 2rem;
         }
+
+        /* Inquiry Form Styles */
+        .inquiry-section {
+            width: 100%;
+            max-width: 650px;
+            margin: 5rem auto 2rem;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .inquiry-section h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #0f172a;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
     </style>
 </head>
 <body>
@@ -235,6 +304,29 @@
     </div>
 
     <div class="grid" id="signatureGrid"></div>
+
+    <section class="inquiry-section">
+        <h2>제휴 문의하기</h2>
+        <form action="https://formspree.io/f/xnjgrppn" method="POST">
+            <div class="form-group">
+                <label for="name">성함</label>
+                <input type="text" id="name" name="name" placeholder="홍길동" required>
+            </div>
+            <div class="form-group">
+                <label for="email">이메일 주소</label>
+                <input type="email" id="email" name="_replyto" placeholder="example@domain.com" required>
+            </div>
+            <div class="form-group">
+                <label for="company">회사명</label>
+                <input type="text" id="company" name="company" placeholder="회사/단체 이름">
+            </div>
+            <div class="form-group">
+                <label for="message">문의 내용</label>
+                <textarea id="message" name="message" rows="4" placeholder="제휴 관련 문의 내용을 입력해주세요." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">문의 보내기</button>
+        </form>
+    </section>
 
     <div class="footer">
         © 2024 Signature AI Labs. Powered by Infinite Generative Archetypes.
